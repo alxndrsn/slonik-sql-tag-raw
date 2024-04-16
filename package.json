@@ -23,7 +23,7 @@
     "serialize-error": "^6.0.0"
   },
   "peerDependencies": {
-    "slonik": ">=22.4.4"
+    "slonik": "*"
   },
   "description": "Slonik SQL tag for constructing dynamic queries.",
   "devDependencies": {
@@ -40,23 +40,17 @@
     "coveralls": "^3.0.11",
     "eslint": "^6.8.0",
     "eslint-config-canonical": "^19.0.3",
+    "eslint-plugin-flowtype": "^5.2.0",
     "flow-bin": "^0.121.0",
     "flow-copy-source": "^2.0.9",
-    "husky": "^4.2.3",
     "inline-loops.macro": "^1.2.2",
     "nyc": "^15.0.0",
     "semantic-release": "^17.0.4",
     "sinon": "^9.0.1",
-    "slonik": "^22.4.4",
-    "eslint-plugin-flowtype": "^5.2.0"
+    "slonik": "npm:@getodk/slonik@23.6.2-4"
   },
   "engines": {
     "node": ">=10.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run test && npm run build"
-    }
   },
   "keywords": [
     "postgres",
@@ -67,7 +61,7 @@
   ],
   "license": "BSD-3-Clause",
   "main": "./dist/index.js",
-  "name": "slonik-sql-tag-raw",
+  "name": "@getodk/slonik-sql-tag-raw",
   "nyc": {
     "all": true,
     "exclude": [
@@ -95,7 +89,8 @@
   "scripts": {
     "build": "rm -fr ./dist && NODE_ENV=production babel ./src --out-dir ./dist --copy-files --source-maps && flow-copy-source src dist",
     "lint": "eslint ./src ./test && flow",
-    "test": "NODE_ENV=test nyc ava --verbose --serial"
+    "test:ava": "NODE_ENV=test nyc ava --verbose --serial",
+    "test": "yarn && yarn build && yarn test:ava && yarn lint"
   },
-  "version": "1.0.1"
+  "version": "1.0.3-1"
 }

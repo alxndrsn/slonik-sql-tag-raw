@@ -1,0 +1,1 @@
+{"version":3,"file":"types.js","names":[],"sources":["../src/types.js"],"sourcesContent":["// @flow\n\nimport type {\n  ValueExpressionType,\n} from 'slonik';\n\nexport type NamedParameterValuesType = {\n  [key: string]: ValueExpressionType,\n  ...\n};\n\nexport type PositionalParameterValuesType = $ReadOnlyArray<ValueExpressionType>;\n"],"mappings":"","ignoreList":[]}
